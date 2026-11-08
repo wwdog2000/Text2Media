@@ -464,6 +464,88 @@ bash install.sh
 
 The installer creates a Python virtual environment and installs the required packages.
 
+### Windows 10 / 11 Installation
+
+#### Requirements
+
+- Windows 10 or Windows 11
+- Python 3.11 or later
+- Git
+- FFmpeg
+
+#### Step 1. Install Python, Git and FFmpeg
+
+Open PowerShell and run:
+
+```powershell
+winget install --id Python.Python.3.11 --exact
+winget install --id Git.Git --exact
+winget install --id Gyan.FFmpeg --exact
+```
+
+Restart PowerShell after installation.
+
+Verify the installations:
+
+```powershell
+py --version
+git --version
+ffmpeg -version
+```
+
+#### Step 2. Download Text2Media
+
+```powershell
+git clone https://github.com/wwdog2000/Text2Media.git
+cd Text2Media
+```
+
+#### Step 3. Install Python Dependencies
+
+Run the Windows installation script:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+#### Step 4. Configure Alibaba Cloud TTS (Optional)
+
+Open `.env` and configure your Alibaba Cloud API key if you want to use Qwen TTS.
+
+Edge-TTS does not require an API key.
+
+#### Step 5. Start Text2Media
+
+```powershell
+.\.venv\Scripts\python.exe app.py
+```
+
+Open your browser and visit:
+
+```text
+http://127.0.0.1:7860
+```
+
+#### Troubleshooting
+
+**FFmpeg not found**
+
+Make sure FFmpeg is installed and available in the Windows PATH environment variable. Restart PowerShell and run:
+
+```powershell
+ffmpeg -version
+```
+
+**Python virtual environment issues**
+
+Use the Python executable inside `.venv` directly:
+
+```powershell
+.\.venv\Scripts\python.exe app.py
+```
+
+This avoids PowerShell activation policy issues.
+
 ### Start the Web Interface
 
 ```bash
