@@ -25,7 +25,7 @@ It can export MP3/WAV audio, SRT subtitles, and MP4 videos with burned-in subtit
 ## Quick start (macOS)
 ```bash
 brew install ffmpeg
-git clone https://github.com/YOUR_GITHUB_NAME/Text2Media.git
+git clone https://github.com/wwdog2000/Text2Media.git
 cd Text2Media
 bash install.sh
 ```
