@@ -119,6 +119,88 @@ bash install.sh
 
 安装脚本会创建 Python 虚拟环境并安装项目依赖。
 
+### Windows 10 / 11 安装指南
+
+#### 系统要求
+
+- Windows 10 或 Windows 11
+- Python 3.11 或更高版本
+- Git
+- FFmpeg
+
+#### 第 1 步：安装 Python、Git 和 FFmpeg
+
+打开 PowerShell 并运行以下命令：
+
+```powershell
+winget install --id Python.Python.3.11 --exact
+winget install --id Git.Git --exact
+winget install --id Gyan.FFmpeg --exact
+```
+
+安装完成后，请重启 PowerShell。
+
+验证安装是否成功：
+
+```powershell
+py --version
+git --version
+ffmpeg -version
+```
+
+#### 第 2 步：下载 Text2Media
+
+```powershell
+git clone https://github.com/wwdog2000/Text2Media.git
+cd Text2Media
+```
+
+#### 第 3 步：安装 Python 依赖项
+
+运行 Windows 安装脚本：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+#### 第 4 步：配置阿里云 TTS（可选）
+
+如果您想使用通义千问（Qwen）TTS，请打开 `.env` 文件并配置您的阿里云 API 密钥。
+
+使用 Edge-TTS 时无需 API 密钥。
+
+#### 第 5 步：启动 Text2Media
+
+```powershell
+.\.venv\Scripts\python.exe app.py
+```
+
+打开浏览器并访问：
+
+```text
+http://127.0.0.1:7860
+```
+
+#### 常见问题排查
+
+**找不到 FFmpeg**
+
+请确保已安装 FFmpeg，并将其添加到了 Windows 的 PATH 环境变量中。重启 PowerShell 并运行：
+
+```powershell
+ffmpeg -version
+```
+
+**Python 虚拟环境相关问题**
+
+请直接使用 `.venv` 目录下的 Python 可执行文件：
+
+```powershell
+.\.venv\Scripts\python.exe app.py
+```
+
+这样可以避免 PowerShell 执行策略（Execution Policy）相关的问题。
+
 ### 启动网页界面
 
 ```bash
